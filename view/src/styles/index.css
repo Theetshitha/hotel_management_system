@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-dark: #1a252f;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --form-background: #ffffff;
+    --button-hover-color: var(--primary-color-light);
+    --error-color: #ff0000;
+    --input-border-color: #ccc;
+    --input-error-border-color: #ff0000;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+}
+#navbarHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.footer_div{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

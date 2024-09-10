@@ -1,0 +1,126 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-dark: #1a252f;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --form-background: #ffffff;
+    --button-hover-color: var(--primary-color-light);
+    --error-color: #ff0000;
+    --input-border-color: #ccc;
+    --input-error-border-color: #ff0000;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+#navbarHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+form {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--form-background);
+    padding: 20px;
+    box-shadow: 0 0 10px var(--box-shadow-color);
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.form-group .error-message {
+    color: var(--error-color);
+    font-size: 12px;
+}
+
+.form-group .input-error {
+    border: 1px solid var(--input-error-border-color);
+}
+
+/* a {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+} */
+
+span a {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+span {
+    text-align: center;
+}
