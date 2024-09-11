@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../config/config.php'; // Include your DB connection settings
 require __DIR__ . '/../model/AdminModel.php'; // Include the model for database interaction
+session_start(); // Start the session
 
 class AdminController {
     private $adminModel;
@@ -60,11 +61,13 @@ class AdminController {
             $admin = $this->adminModel->getAdminByEmail($admin_email);
 
             if ($admin && password_verify($admin_password, $admin['admin_password'])) {
-                // Store the admin name in localStorage using JavaScript and redirect to the dashboard
-                echo "<script>
-                        localStorage.setItem('admin_name', '" . $admin['admin_name'] . "');
-                        window.location.href = '../view/admin/adminDashboard.php';
-                      </script>";
+                // Set session variables for logged-in admin
+                $_SESSION['admin_logged_in'] = true;
+                $_SESSION['admin_name'] = $admin['admin_name'];
+
+                // Redirect to the dashboard
+                header("Location: /admin-dashboard");
+                exit();
             } else {
                 echo "Invalid login credentials.";
             }
@@ -80,3 +83,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['admin_login'])) {
     $controller = new AdminController();
     $controller->signup();
 }
+?>

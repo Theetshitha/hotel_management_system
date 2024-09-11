@@ -100,14 +100,19 @@
             display: none;
             position: absolute;
             background-color: var(--background-color);
-            min-width: 160px;
+            min-width: 140px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             padding: 0;
             margin: 0;
             list-style-type: none;
         }
-
+        #profileDropdown{
+            min-width: 60px;
+        }
+        #roomBookingDropdown{
+            min-width: 100px;
+        }
         .navbar-right .dropdown:hover .dropdown-menu {
             display: block;
         }
@@ -224,7 +229,7 @@
         <nav class="navbar">
             <div class="navbar-left">
                 <button id="sidebarToggle" class="sidebar-icon">&#9776;</button>
-                <a href="../../index.php" class="logo">Hotel Hub</a>
+                <a href="/" class="logo">Hotel Hub</a>
             </div>
             <div class="navbar-center">
                 <input type="text" placeholder="Search rooms, locations..." class="search-bar">
@@ -234,7 +239,7 @@
                 <ul>
                     <li class="dropdown">
                         <a href="#" class="active">Room Booking</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="roomBookingDropdown">
                             <li><a href="/view/admin/adminSignup.php">Single Bed</a></li>
                             <li><a href="#">AC Rooms</a></li>
                             <li><a href="#">Double Bed Rooms</a></li>
@@ -242,7 +247,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#">Service Booking</a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="serviceBookingDropdown">
                             <li><a href="#">Food</a></li>
                             <li><a href="#">Laundry</a></li>
                             <li><a href="#">Cleaning</a></li>
@@ -250,8 +255,8 @@
                     </li>
                     <li class="profile dropdown">
                         <a href="#">Profile &#9662;</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">View Profile</a></li>
+                        <ul class="dropdown-menu" id="profileDropdown">
+                            <li><a href="#">Profile</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
                     </li>
@@ -272,6 +277,12 @@
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="/admin-login">Admin Login</a></li>
+            <li><a href="/admin-signup">Admin signup</a></li>
+            <li><a href="/admin-dashboard">Admin Dashboard</a></li>
         </ul>
     </aside>
 

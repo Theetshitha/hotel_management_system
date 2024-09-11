@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Signup</title>
-    <link rel="stylesheet" href="../src/styles/adminSignup.css">
+    <link rel="stylesheet" href="/view/src/styles/adminSignup.css">
 </head>
 <body>
     <div id="navbarHeader">
@@ -39,7 +39,7 @@
         <div class="form-group">
             <button type="submit">Signup</button>
         </div>
-    <span>Already having a account? <a href="./adminLogin.php">Admin Login</a></span>
+    <span>Already having a account? <a href="/admin-login">Admin Login</a></span>
     
 
     </form>

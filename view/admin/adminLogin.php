@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../src/styles/adminSignup.css">
+    <link rel="stylesheet" href="/view/src/styles/adminSignup.css">
     <style>
         .footer_div{
             position: fixed;
@@ -21,7 +21,7 @@
     </div>
     <h1>Admin Login</h1>
 
-    <form id="loginForm" action="../../controller/AdminController.php" method="POST">
+    <form id="loginForm" action="/controller/AdminController.php" method="POST">
         <div class="form-group">
             <label for="admin_email">Email:</label>
             <input type="email" id="admin_email" name="admin_email" required>
@@ -33,7 +33,7 @@
         <div class="form-group">
             <button type="submit" name="admin_login">Login</button>
         </div>
-        <span>Don't have a account? <a href="./adminSignup.php">Admin Signup</a></span>
+        <span>Don't have a account? <a href="/admin-signup">Admin Signup</a></span>
     </form>
     <div class="footer_div">
     <?php include __DIR__ . '/../partials/footer.php'; ?>

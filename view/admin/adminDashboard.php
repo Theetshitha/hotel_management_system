@@ -25,13 +25,8 @@
     <p>The HotelHub</p>
     <p>Email: support@hotelhub.com</p>
     <p>Phone: 9629886074</p>
-    <p>Please use the navigation menu to access different sections of the admin dashboard.</p>
-    <p>If you have any questions or need assistance, please contact our support team.</p>
-    <p>Thank you for using our hotel booking system!</p>
-    <p>Best regards,</p>
-    <p>The HotelHub</p>
-    <p>Email: support@hotelhub.com</p>
-    <p>Phone: 9629886074</p>
+    <p>Address: 123 Main Street, Chennai, Tamilnadu, India</p>
+    <p>Website: <a href="/HotelHub"> HotelHub.com</a></p>
 
     <div class="footer_div">
     <?php include __DIR__ . '/../partials/footer.php'; ?>
