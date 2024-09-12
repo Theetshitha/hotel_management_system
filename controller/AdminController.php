@@ -73,12 +73,25 @@ class AdminController {
             }
         }
     }
+
+    // Handle admin logout
+    public function logout() {
+        session_start(); // Ensure the session is started
+        session_destroy(); // Destroy all session data
+
+        // Redirect to login page after logout
+        header("Location: /admin-login");
+        exit();
+    }
 }
 
-// Route based on the request type (signup or login)
+// Route based on the request type (signup, login, or logout)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['admin_login'])) {
     $controller = new AdminController();
     $controller->login();
+} elseif (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    $controller = new AdminController();
+    $controller->logout();
 } else {
     $controller = new AdminController();
     $controller->signup();

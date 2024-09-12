@@ -26,10 +26,14 @@ switch ($requestUri) {
     case '/admin-signup':
         include __DIR__ . '/../view/admin/adminSignup.php';
         break;
+    // case '/logout':
+    //     require __DIR__ . '/../controller/logout.php';
+    //     break;
     case '/logout':
-        require __DIR__ . '/../controller/LogoutController.php';
+        // Directly call the logout method from AdminController without any extra include
+        $adminController = new AdminController();
+        $adminController->logout();
         break;
-   
     default:
         http_response_code(404);
         echo "Page not found.";

@@ -45,7 +45,7 @@
             text-decoration: none;
             font-size: 24px;
             font-weight: bold;
-            margin-right: 20px; /* Adjust spacing as needed */
+            margin-right: 20px;
         }
 
         .navbar-center {
@@ -59,8 +59,7 @@
             padding: 8px;
             border: none;
             border-radius: 8px 0px 0 8px;
-            width: 60%; /* Adjust width as needed */
-            margin-right:0;
+            width: 60%;
         }
 
         .search-icon {
@@ -100,19 +99,23 @@
             display: none;
             position: absolute;
             background-color: var(--background-color);
-            min-width: 140px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            min-width: 135px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             padding: 0;
             margin: 0;
             list-style-type: none;
         }
-        #profileDropdown{
-            min-width: 60px;
+
+        #profileDropdown {
+            margin-left: -2.5rem;
+            min-width: 127px;
         }
-        #roomBookingDropdown{
-            min-width: 100px;
+
+        #roomBookingDropdown {
+            min-width: 125px;
         }
+
         .navbar-right .dropdown:hover .dropdown-menu {
             display: block;
         }
@@ -126,7 +129,7 @@
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            text-align: left;
+            text-align: center;
         }
 
         .dropdown-menu a:hover {
@@ -186,7 +189,28 @@
         }
 
         .sidebar-icon:hover {
-            background-color: #2980b9; /* Darker shade of secondary color */
+            background-color: #2980b9;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .profile-icon i {
+            margin-top: -0.3rem;
+            font-size: 2rem;
         }
 
         @media screen and (max-width: 600px) {
@@ -204,7 +228,7 @@
             }
 
             .navbar-center {
-                justify-content: center; /* Ensure centering on mobile */
+                justify-content: center;
             }
         }
 
@@ -242,7 +266,7 @@
                         <ul class="dropdown-menu" id="roomBookingDropdown">
                             <li><a href="/view/admin/adminSignup.php">Single Bed</a></li>
                             <li><a href="#">AC Rooms</a></li>
-                            <li><a href="#">Double Bed Rooms</a></li>
+                            <li><a href="#">Double Bed</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -254,16 +278,27 @@
                         </ul>
                     </li>
                     <li class="profile dropdown">
-                        <a href="#">Profile &#9662;</a>
+                    <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true): ?>
+                        <!-- Profile dropdown menu visible after login -->
+                        <a href="#" class="profile-icon">
+                            <i class="fa fa-user"></i>
+                        </a>
                         <ul class="dropdown-menu" id="profileDropdown">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="?action=logout">Logout</a></li> <!-- Link to trigger logout -->
                         </ul>
-                    </li>
+                    <?php else: ?>
+                        <!-- Login text visible by default (before login) -->
+                        <a href="/view/admin/adminLogin.php">Login</a>
+                    <?php endif; ?>
+                </li>
+
                 </ul>
             </div>
         </nav>
     </header>
+
+    <!-- Sidebar -->
 
     <!-- Sidebar -->
     <aside id="sidebar" class="sidebar">
@@ -298,6 +333,6 @@
             sidebar.classList.remove('open');
         });
     </script>
-</body>
+    </body>
 
 </html>
