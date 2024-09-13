@@ -289,7 +289,7 @@
                         </ul>
                     <?php else: ?>
                         <!-- Login text visible by default (before login) -->
-                        <a href="/view/admin/adminLogin.php">Login</a>
+                        <a href="/admin-login">Login</a>
                     <?php endif; ?>
                 </li>
 
