@@ -39,6 +39,7 @@
     <?php include __DIR__ . '/../partials/footer.php'; ?>
 
     </div>
+    <script src="/view/src/script/adminLoginValidate.js"></script>
 </body>
 </html>
 

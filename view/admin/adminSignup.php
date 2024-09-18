@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,56 +8,81 @@
 </head>
 <body>
     <div id="navbarHeader">
-    <?php include __DIR__ . '/../partials/header.php'; ?>
-
+        <?php include __DIR__ . '/../partials/header.php'; ?>
     </div>
+    
     <h1>Admin Signup</h1>
 
     <form id="signupForm" action="../../controller/AdminController.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="admin_name">Name:</label>
-            <input type="text" id="admin_name" name="admin_name" required>
+            <div class="input-wrapper">
+                <input type="text" id="admin_name" name="admin_name">
+                <div class="tooltip" id="nameTooltip">
+                    <ul>
+                        <li id="minLength" class="invalid">At least 3 characters</li>
+                        <li id="noNumbers" class="invalid">No numbers allowed</li>
+                        <li id="noSpecialCharacters" class="invalid">No special characters allowed</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="admin_email">Email:</label>
-            <input type="email" id="admin_email" name="admin_email" required>
+            <div class="input-wrapper">
+                <input type="text" id="admin_email" name="admin_email">
+                <div class="tooltip" id="emailTooltip">
+                    <ul>
+                        <li id="atSymbol">Must contain "@" symbol</li>
+                        <li id="domain">Must contain a valid domain (e.g., gmail.com)</li>
+                        <li id="noSpaces">Must not contain spaces</li>
+                        <li id="validCharacters">Only letters, numbers, periods, and underscores are allowed</li>
+                        <li id="length">Email should be between 5 and 50 characters long</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="admin_password">Password:</label>
-            <input type="password" id="admin_password" name="admin_password" required>
+            <div class="input-wrapper">
+                <input type="password" id="admin_password" name="admin_password">
+                <div class="tooltip" id="passwordTooltip">
+                    <ul>
+                        <li id="length" class="invalid">At least 8 characters</li>
+                        <li id="lowercase" class="invalid">One lowercase letter</li>
+                        <li id="uppercase" class="invalid">One uppercase letter</li>
+                        <li id="number" class="invalid">One number</li>
+                        <li id="special" class="invalid">One special character (@$!%*?&)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" required>
-            <div class="error-message" id="passwordError"></div>
+            <input type="password" id="confirm_password" name="confirm_password">
+            <div class="tooltip" id="confirmPasswordTooltip"></div>
         </div>
+
         <div class="form-group">
             <label for="profile_image">Profile Image:</label>
             <input type="file" id="profile_image" name="profile_image" accept="image/*">
+            <div class="tooltip" id="profileImageTooltip"></div>
         </div>
+
         <div class="form-group">
             <button type="submit">Signup</button>
         </div>
-    <span>Already having a account? <a href="/admin-login">Admin Login</a></span>
-    
 
+        <span>Already have an account? <a href="/admin-login">Admin Login</a></span>
     </form>
 
-
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            const password = document.getElementById('admin_password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                document.getElementById('passwordError').textContent = 'Passwords do not match';
-            }
-        });
-    </script>
     <div class="footer_div">
-    <?php include __DIR__ . '/../partials/footer.php'; ?>
-
+        <?php include __DIR__ . '/../partials/footer.php'; ?>
     </div>
+
+    <script src="/view/src/script/adminSignupValidate.js"></script>
 </body>
 </html>
-

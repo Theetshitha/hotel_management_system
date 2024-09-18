@@ -12,12 +12,11 @@
     --input-border-color: #ccc;
     --input-error-border-color: #ff0000;
     --box-shadow-color: rgba(0, 0, 0, 0.1);
-}
-
-#navbarHeader {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    --tooltip-bg-color: #fff8dc;
+    --tooltip-text-color: #333;
+    --tooltip-border-color: #ccc;
+    --tooltip-valid-color: green;
+    --tooltip-invalid-color: red;
 }
 
 body {
@@ -25,9 +24,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     height: 100vh;
 }
 
@@ -98,18 +94,6 @@ form {
     border: 1px solid var(--input-error-border-color);
 }
 
-/* a {
-    text-align: center;
-    display: block;
-    margin-top: 10px;
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-} */
-
 span a {
     text-align: center;
     display: block;
@@ -121,6 +105,75 @@ span a {
 a:hover {
     text-decoration: underline;
 }
+
 span {
     text-align: center;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    left: 72%;
+    margin-left: 10px;
+    background-color: var(--tooltip-bg-color);
+    border: 1px solid var(--tooltip-border-color);
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px var(--box-shadow-color);
+    width: 200px;
+    font-size: 12px;
+    color: var(--tooltip-text-color);
+    display: none; /* Hidden by default */
+    z-index: 10;
+}
+#nameTooltip{
+    margin-top: -56px;
+}
+#passwordTooltip{
+    margin-top: -76px;
+}
+#emailTooltip{
+    margin-top: -96px;
+    margin-left: -790px;
+}
+#confirmPasswordTooltip{
+    margin-top: -35px;
+    color: var(--accent-color);
+}
+#profileImageTooltip{
+    margin-top: -36px;
+    margin-left: -790px;
+    color: var(--accent-color);
+}
+.tooltip ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.tooltip ul li {
+    margin-bottom: 5px;
+}
+
+/* Icons for valid and invalid states */
+.tooltip .invalid::before {
+    content: ' ✗ ';
+    color: var(--tooltip-invalid-color);
+}
+
+.tooltip .valid::before {
+    content: ' ✔ ';
+    color: var(--tooltip-valid-color);
+}
+
+.tooltip ul li.valid {
+    color: var(--tooltip-valid-color);
+}
+
+.tooltip ul li.invalid {
+    color: var(--tooltip-invalid-color);
+}
+
+input:focus + .tooltip {
+    display: block; /* Show tooltip on input focus */
 }

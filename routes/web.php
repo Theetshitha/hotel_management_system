@@ -26,9 +26,7 @@ switch ($requestUri) {
     case '/admin-signup':
         include __DIR__ . '/../view/admin/adminSignup.php';
         break;
-    // case '/logout':
-    //     require __DIR__ . '/../controller/logout.php';
-    //     break;
+    
     case '/logout':
         // Directly call the logout method from AdminController without any extra include
         $adminController = new AdminController();

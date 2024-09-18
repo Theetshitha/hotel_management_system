@@ -11,8 +11,8 @@ class AdminModel {
     // Insert a new admin into the database
     public function insertAdmin($admin_name, $admin_email, $admin_password, $profile_image) {
         // Check if admin name or email already exists
-        if ($this->adminExists($admin_name, $admin_email)) {
-            throw new Exception('Admin with this name or email already exists.');
+        if ($this->adminExists( $admin_email)) {
+            throw new Exception('Admin with this email already exists.');
         }
 
         // Insert query
@@ -31,10 +31,10 @@ class AdminModel {
     }
 
     // Check if an admin with the given name or email exists
-    public function adminExists($admin_name, $admin_email) {
-        $sql = "SELECT COUNT(*) FROM tbl_hms_admin WHERE admin_name = :admin_name OR admin_email = :admin_email";
+    public function adminExists( $admin_email) {
+        $sql = "SELECT COUNT(*) FROM tbl_hms_admin WHERE admin_email = :admin_email";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':admin_name', $admin_name);
+        // $stmt->bindParam(':admin_name', $admin_name);
         $stmt->bindParam(':admin_email', $admin_email);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
