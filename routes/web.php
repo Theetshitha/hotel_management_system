@@ -2,6 +2,9 @@
 require __DIR__ . '/../middleware/AuthMiddleware.php';
 require __DIR__ . '/../controller/AdminController.php';
 
+// Instantiate the AdminController once at the top
+$controller = new AdminController();
+
 // Parse the URL
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -28,10 +31,9 @@ switch ($requestUri) {
         break;
     
     case '/logout':
-        // Directly call the logout method from AdminController without any extra include
-        $adminController = new AdminController();
-        $adminController->logout();
+        $controller->logout(); // Call the logout method from the existing instance
         break;
+
     default:
         http_response_code(404);
         echo "Page not found.";
