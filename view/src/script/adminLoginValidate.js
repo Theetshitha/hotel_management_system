@@ -1,48 +1,59 @@
-// document.getElementById('loginForm').addEventListener('submit', function (event) {
-//     event.preventDefault(); // Prevent default form submission
+document.getElementById('loginForm').addEventListener('submit', function (event) {
+    const email = document.getElementById('admin_email').value.trim();
+    const password = document.getElementById('admin_password').value.trim();
+    let valid = true;
 
-//     let email = document.getElementById('admin_email');
-//     let password = document.getElementById('admin_password');
-//     let isValid = true;
+    // Validate email
+    const emailValidation = validateEmail(email);
+    if (!emailValidation.isValid) {
+        valid = false;
+        showTooltip('emailTooltip', 'Invalid email. Please enter a valid email.');
+    } else {
+        hideTooltip('emailTooltip');
+    }
 
-//     // Email validation regex
-//     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    // Validate password
+    const passwordValidation = validatePassword(password);
+    if (!passwordValidation.isValid) {
+        valid = false;
+        showTooltip('passwordTooltip', 'Wrong password. Please enter a valid password.');
+    } else {
+        hideTooltip('passwordTooltip');
+    }
 
-//     // Clear previous tooltips
-//     removeTooltips();
+    // Prevent form submission if any validation fails
+    if (!valid) {
+        event.preventDefault();
+    }
+});
 
-//     // Email validation
-//     if (!email.value || !emailRegex.test(email.value)) {
-//         showTooltip(email, 'Invalid email format. Please enter a valid email.', 'red');
-//         isValid = false;
-//     } else {
-//         showTooltip(email, 'Valid email.', 'green');
-//     }
+// Email validation: checks for a valid email format
+function validateEmail(email) {
+    return {
+        isValid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) // Basic email regex
+    };
+}
 
-//     // Password validation
-//     if (!password.value || !passwordRegex.test(password.value)) {
-//         showTooltip(password, 'Password must be at least 8 characters long and contain one uppercase, one lowercase, one number, and one special character.', 'red');
-//         isValid = false;
-//     } else {
-//         showTooltip(password, 'Valid password.', 'green');
-//     }
+// Password validation: checks for minimum length of 8 characters
+function validatePassword(password) {
+    return {
+        isValid: password.length >= 8 // Minimum password length is 8 characters
+    };
+}
 
-//     if (isValid) {
-//         this.submit(); // Only submit the form if all validations pass
-//     }
-// });
+// Function to show the tooltip with a custom message
+function showTooltip(id, message) {
+    const tooltip = document.getElementById(id);
+    if (tooltip) {
+        tooltip.style.display = 'block';
+        tooltip.innerText = message;
+    }
+}
 
-// // Helper functions
-// function showTooltip(element, message, color) {
-//     let tooltip = document.createElement('span');
-//     tooltip.className = 'tooltip';
-//     tooltip.textContent = message;
-//     tooltip.style.color = color;
-//     element.parentNode.appendChild(tooltip);
-// }
-
-// function removeTooltips() {
-//     let tooltips = document.querySelectorAll('.tooltip');
-//     tooltips.forEach(tooltip => tooltip.remove());
-// }
+// Function to hide the tooltip
+function hideTooltip(id) {
+    const tooltip = document.getElementById(id);
+    if (tooltip) {
+        tooltip.style.display = 'none';
+    }
+}

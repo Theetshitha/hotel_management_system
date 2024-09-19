@@ -16,7 +16,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
         hideTooltip('nameTooltip');
     }
 
-    // Validate email
+    // Validate email with business email check
     const emailValidation = validateEmailDetails(email);
     if (!emailValidation.isValid) {
         valid = false;
@@ -82,17 +82,21 @@ function updateNameTooltip(validation) {
     updateValidationStatus('noSpecialCharacters', validation.noSpecialCharacters);
 }
 
-// Email validation function that checks multiple criteria
+// Business Email validation: ensuring the email belongs to a business domain
 function validateEmailDetails(email) {
+    const freeDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com']; // Add more free domains if needed
+    const domain = email.split('@')[1];
+    
     const validation = {
         atSymbol: email.includes('@'),
         domain: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
         noSpaces: !/\s/.test(email),
         validCharacters: /^[A-Za-z0-9._]+$/.test(email.replace(/@.*$/, '')),
         length: email.length >= 5 && email.length <= 50,
+        businessDomain: domain && !freeDomains.includes(domain), // Ensures email is a business domain
         isValid: false
     };
-    validation.isValid = validation.atSymbol && validation.domain && validation.noSpaces && validation.validCharacters && validation.length;
+    validation.isValid = validation.atSymbol && validation.domain && validation.noSpaces && validation.validCharacters && validation.length && validation.businessDomain;
     return validation;
 }
 
@@ -105,6 +109,7 @@ function updateEmailTooltip(validation) {
     updateValidationStatus('noSpaces', validation.noSpaces);
     updateValidationStatus('validCharacters', validation.validCharacters);
     updateValidationStatus('length', validation.length);
+    updateValidationStatus('businessDomain', validation.businessDomain);
 }
 
 // Password validation function: checks for length, lowercase, uppercase, number, and special character

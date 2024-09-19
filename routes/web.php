@@ -2,10 +2,7 @@
 require __DIR__ . '/../middleware/AuthMiddleware.php';
 require __DIR__ . '/../controller/AdminController.php';
 
-// Instantiate the AdminController once at the top
 $controller = new AdminController();
-
-// Parse the URL
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Route based on the URL path
@@ -31,7 +28,7 @@ switch ($requestUri) {
         break;
     
     case '/logout':
-        $controller->logout(); // Call the logout method from the existing instance
+        $controller->logout(); 
         break;
 
     default:

@@ -17,7 +17,7 @@
         <div class="form-group">
             <label for="admin_name">Name:</label>
             <div class="input-wrapper">
-                <input type="text" id="admin_name" name="admin_name">
+                <input type="text" id="admin_name" name="admin_name" placeholder="Enter your Name">
                 <div class="tooltip" id="nameTooltip">
                     <ul>
                         <li id="minLength" class="invalid">At least 3 characters</li>
@@ -29,25 +29,25 @@
         </div>
 
         <div class="form-group">
-            <label for="admin_email">Email:</label>
-            <div class="input-wrapper">
-                <input type="text" id="admin_email" name="admin_email">
-                <div class="tooltip" id="emailTooltip">
-                    <ul>
-                        <li id="atSymbol">Must contain "@" symbol</li>
-                        <li id="domain">Must contain a valid domain (e.g., gmail.com)</li>
-                        <li id="noSpaces">Must not contain spaces</li>
-                        <li id="validCharacters">Only letters, numbers, periods, and underscores are allowed</li>
-                        <li id="length">Email should be between 5 and 50 characters long</li>
-                    </ul>
-                </div>
-            </div>
+    <label for="admin_email">Email:</label>
+    <div class="input-wrapper">
+        <input type="text" id="admin_email" name="admin_email" placeholder="Enter your Bussines E-Mail">
+        <div class="tooltip" id="emailTooltip">
+            <ul>
+                <li id="atSymbol">Must contain "@" symbol</li>
+                <li id="noSpaces">Must not contain spaces</li>
+                <li id="validCharacters">Only letters, numbers, periods, and underscores are allowed</li>
+                <li id="length">Email should be between 5 and 50 characters long</li>
+                <li id="businessDomain">Please enter your Bussines E-Mail</li>
+            </ul>
+           </div>
         </div>
+    </div>
 
         <div class="form-group">
             <label for="admin_password">Password:</label>
             <div class="input-wrapper">
-                <input type="password" id="admin_password" name="admin_password">
+                <input type="password" id="admin_password" name="admin_password" placeholder="Enter your password">
                 <div class="tooltip" id="passwordTooltip">
                     <ul>
                         <li id="length" class="invalid">At least 8 characters</li>
@@ -62,13 +62,13 @@
 
         <div class="form-group">
             <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password">
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-Enter your password">
             <div class="tooltip" id="confirmPasswordTooltip"></div>
         </div>
 
         <div class="form-group">
             <label for="profile_image">Profile Image:</label>
-            <input type="file" id="profile_image" name="profile_image" accept="image/*">
+            <input type="file" id="profile_image" name="profile_image" accept="image/*" placeholder="Upload your Profile Image">
             <div class="tooltip" id="profileImageTooltip"></div>
         </div>
 
