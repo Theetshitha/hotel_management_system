@@ -3,14 +3,14 @@ class AdminModel {
     private $pdo;
 
     public function __construct() {
-        // Access global PDO object (assuming it's in config.php)
+        
         global $pdo;
         $this->pdo = $pdo;
     }
 
     // Insert a new admin into the database
     public function insertAdmin($admin_name, $admin_email, $admin_password, $profile_image) {
-        // Check if admin name or email already exists
+        // Check if admin email already exists
         if ($this->adminExists( $admin_email)) {
             throw new Exception('Admin with this email already exists.');
         }
@@ -30,7 +30,7 @@ class AdminModel {
         return $stmt->execute();
     }
 
-    // Check if an admin with the given name or email exists
+    // Check if an admin with the given email exists
     public function adminExists( $admin_email) {
         $sql = "SELECT COUNT(*) FROM tbl_hms_admin WHERE admin_email = :admin_email";
         $stmt = $this->pdo->prepare($sql);

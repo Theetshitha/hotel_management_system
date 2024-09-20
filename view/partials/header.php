@@ -540,7 +540,7 @@ session_start(); // Start the session to access login status
             </ul>  
            </li>  
          </ul>  
-        <a href="#" class="login-btn">Login</a>  
+        <a href="/admin-login" class="login-btn">Login</a>  
         </div>                                  
         </nav>  
     </header>  
