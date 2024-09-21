@@ -1,38 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HotelHub Admin Dashboard</title>
-    <link rel="stylesheet" href="../src/styles/adminDashboard.css">
-
+    <link rel="stylesheet" href="/view/src/styles/adminDashboard.css">
 </head>
 <body>
-    
     <div id="navbarHeader">
-    <?php include __DIR__ . '/../partials/header.php'; ?>
-
+        <?php include __DIR__ . '/../partials/header.php'; ?>
     </div>
-   <h1>Welcome to the Admin Dashboard</h1>
-    <h2>Admin Dashboard</h2>
-    <p>This is where you can manage hotel bookings, user accounts, and more.</p>
-    <p>You can add, edit, and delete hotel bookings, manage user accounts, and perform other administrative tasks.</p>
-    <p>Please use the navigation menu to access different sections of the admin dashboard.</p>
-    <p>If you have any questions or need assistance, please contact our support team.</p>
-    <p>Thank you for using our hotel booking system!</p>
-    <p>Best regards,</p>
-    <p>The HotelHub</p>
-    <p>Email: support@hotelhub.com</p>
-    <p>Phone: 9629886074</p>
-    <p>Address: 123 Main Street, Chennai, Tamilnadu, India</p>
-    <p>Website: <a href="/HotelHub"> HotelHub.com</a></p>
+
+    <main class="dashboard-container">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <section class="dashboard-section">
+            <h2>Manage Hotels</h2>
+            <p>View and manage all the hotels listed in the system. Add new hotels or edit the details of existing ones.</p>
+            <button class="btn-primary" onclick="addHotel()">Add Hotel</button>
+            <div id="hotel-list">
+                <!-- List of hotels will be displayed here -->
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Manage Rooms & Services</h2>
+            <p>Assign rooms and services to the hotels. Add new rooms, edit services, or remove listings as necessary.</p>
+            <button class="btn-primary">Add Room</button>
+            <button class="btn-primary">Add Service</button>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Manage Users</h2>
+            <p>View and manage user accounts. Check their bookings, edit their profiles, or remove users from the system.</p>
+            <button class="btn-primary">View Users</button>
+        </section>
+
+        <section class="dashboard-section">
+            <h2>Manage Bookings</h2>
+            <p>Track and manage hotel bookings. View booking details, confirm or cancel bookings as required.</p>
+            <button class="btn-primary">View Bookings</button>
+        </section>
+    </main>
 
     <div class="footer_div">
-    <?php include __DIR__ . '/../partials/footer.php'; ?>
-
+        <?php include __DIR__ . '/../partials/footer.php'; ?>
     </div>
+
+    <script>
+        function addHotel() {
+            window.location.href = '/view/admin/addHotelForm.php';
+        }
+    </script>
 </body>
-
 </html>
-
