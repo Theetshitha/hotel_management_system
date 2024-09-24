@@ -25,8 +25,7 @@
         <section class="dashboard-section">
             <h2>Manage Rooms & Services</h2>
             <p>Assign rooms and services to the hotels. Add new rooms, edit services, or remove listings as necessary.</p>
-            <button class="btn-primary">Add Room</button>
-            <button class="btn-primary">Add Service</button>
+            <button class="btn-primary" onclick="viewHotels()" >View Hotels</button>
         </section>
 
         <section class="dashboard-section">
@@ -48,8 +47,19 @@
 
     <script>
         function addHotel() {
-            window.location.href = '/view/admin/addHotelForm.php';
+            window.location.href = '/admin-add-hotel';
         }
+        function viewHotels() {
+            window.location.href = '/admin-manage-hotels';
+        }
+
+        // function viewUsers() {
+        //     window.location.href = '/admin-view-users';
+        // }
+
+        // function viewBookings() {
+        //     window.location.href = '/admin-view-bookings';
+        // }
     </script>
 </body>
 </html>

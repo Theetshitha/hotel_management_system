@@ -15,10 +15,10 @@
         <div class="form-header">
         <h2>Add Hotel</h2>
 
-        <a href="/view/admin/adminDashboard.php"><button class="btn-primary">Back</button></a>
+        <a href="/admin-dashboard"><button class="btn-primary">Back</button></a>
         </div>
 
-        <form action="addHotelProcess.php" method="POST" enctype="multipart/form-data" class="add-hotel-form">
+        <form action="../../controller/addHotelController.php" method="POST" enctype="multipart/form-data" class="add-hotel-form">
             
             <div class="form-row">
                 <div class="form-group">
@@ -39,10 +39,11 @@
 
            
             <div class="form-row">
-                <div class="form-group">
-                    <label for="price_per_room">Price per Room</label>
-                    <input type="number" step="0.01" id="price_per_room" name="price_per_room" required>
-                </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" step="0.01" id="price" name="price" required>
+            </div>
+
 
                 <div class="form-group">
                     <label for="availability">Availability</label>
@@ -122,10 +123,12 @@
                 <button type="reset" class="btn-primary">Reset</button>
             </div>
         </form>
+        
     </main>
-
+   
     <div class="footer_div">
         <?php include __DIR__ . '/../partials/footer.php'; ?>
     </div>
+    
 </body>
 </html>

@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-dark: #1a252f;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --form-background: #ffffff;
+    --button-hover-color: var(--primary-color-light);
+    --error-color: #ff0000;
+    --input-border-color: #ccc;
+    --input-error-border-color: #ff0000;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --banner-background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+#navbarHeader {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header.banner {
+    background: var(--banner-background);
+    color: var(--text-color);
+    padding: 40px 0;
+    text-align: center;
+}
+
+header.banner .banner-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header.banner .banner-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.admin-intro p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hotel-cards {
+    margin-top: 30px;
+}
+
+.hotel-cards h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hotel-card {
+    background-color: var(--form-background);
+    border: 1px solid var(--input-border-color);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 250px;
+    margin-top: 1rem;
+    text-align: center;
+    padding: 20px;
+}
+.admin-intro{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.hotel-card:hover {
+    transform: scale(1.05);
+}
+
+.hotel-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--input-border-color);
+}
+
+.hotel-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: var(--primary-color);
+}
+
+.hotel-card p {
+    font-size: 1rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.delete-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.edit-btn:hover {
+    background-color: var(--primary-color-light);
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}

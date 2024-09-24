@@ -22,6 +22,15 @@ switch ($requestUri) {
         AuthMiddleware::checkAdmin();
         include __DIR__ . '/../view/admin/adminDashboard.php';
         break;
+    case '/admin-add-hotel':
+        AuthMiddleware::checkAdmin();
+        include __DIR__ . '/../view/admin/addHotelForm.php';
+        break;
+
+    case '/admin-manage-hotels':
+        AuthMiddleware::checkAdmin();
+        include __DIR__ . '/../view/admin/adminHotelListing.php';
+        break;
 
     case '/admin-signup':
         include __DIR__ . '/../view/admin/adminSignup.php';

@@ -310,7 +310,7 @@ session_start(); // Start the session to access login status
                         </a>
                         <ul class="dropdown-menu" id="profileDropdown">
                             <li><a href="#">View Profile</a></li>
-                            <li><a href="?action=logout">Logout</a></li> <!-- Link to trigger logout -->
+                            <li><a href="/logout">Logout</a></li> <!-- Link to trigger logout -->
                         </ul>
                     <?php else: ?>
                         <!-- Login text visible by default (before login) -->
@@ -328,11 +328,11 @@ session_start(); // Start the session to access login status
     <!-- Sidebar -->
     <aside id="sidebar" class="sidebar">
         <div class="sidebar-header">
-            <a href="index.php" class="logo">Hotel Hub</a>
+            <a href="/" class="logo">Hotel Hub</a>
         </div>
         <ul class="sidebar-links">
             <li><a href="#">Services</a></li>
-            <li><a href="#">Famous Hotels</a></li>
+            <li><a href="/">Famous Hotels</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Privacy Policy</a></li>

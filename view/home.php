@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../controller/HotelController.php';
+
+// Initialize the controller
+$hotelController = new HotelController($pdo);
+$hotels = $hotelController->displayHotels();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,31 +35,20 @@
         </section>
 
         <section class="hotel-cards">
-            <h2>Famous Hotels</h2>
-            <div class="card-container">
-                <div class="hotel-card">
-                    <img src="https://picsum.photos/200/150?random=1" alt="Hotel 1">
-                    <h3>Hotel Sunshine</h3>
-                    <p>A luxurious stay with stunning views and top-notch services.</p>
-                </div>
-                <div class="card-container">
-                <div class="hotel-card">
-                    <img src="https://picsum.photos/200/150?random=4" alt="Hotel 1">
-                    <h3>Hotel Bliss Stay</h3>
-                    <p>Here you enjoy our best services and rooms with heaven feel tasty foods. </p>
-                </div>
-                <div class="hotel-card">
-                    <img src="https://picsum.photos/200/150?random=2" alt="Hotel 2">
-                    <h3>Hotel Ocean Breeze</h3>
-                    <p>Enjoy a peaceful retreat by the beach with excellent amenities.</p>
-                </div>
-                <div class="hotel-card">
-                    <img src="https://picsum.photos/200/150?random=3" alt="Hotel 3">
-                    <h3>Hotel Mountain Escape</h3>
-                    <p>Experience nature's beauty and relaxation in the mountains.</p>
-                </div>
+    <h2>Famous Hotels</h2>
+    <div class="card-container">
+        <?php foreach ($hotels as $hotel): ?>
+            <div class="hotel-card">
+                <img src="<?php echo $hotel['image']; ?>" alt="<?php echo $hotel['hotel_name']; ?>">
+                <h3><?php echo $hotel['hotel_name']; ?></h3>
+                <p><?php echo $hotel['description']; ?></p>
+                <p>Location: <?php echo $hotel['location']; ?></p>
+                <!-- View Details button -->
+                <a href="hotel-details.php?hotel_id=<?php echo $hotel['hotel_id']; ?>" class="view-details-btn">View Details</a>
             </div>
-        </section>
+        <?php endforeach; ?>
+    </div>
+</section>
     </main>
 
     <div class="footer_div">
