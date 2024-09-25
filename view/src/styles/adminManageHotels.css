@@ -145,3 +145,8 @@ header.banner .banner-content p {
 .delete-btn:hover {
     background-color: #c0392b;
 }
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin: 10px 0;
+}

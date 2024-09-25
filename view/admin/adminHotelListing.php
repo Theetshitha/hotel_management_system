@@ -1,10 +1,18 @@
 <?php
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../controller/HotelController.php';
+require_once __DIR__ . '/../../controller/deleteHotelController.php';
 
-// Initialize the controller
+// Initialize hotel and delete controllers
 $hotelController = new HotelController($pdo);
 $hotels = $hotelController->displayHotels();
+$deleteController = new DeleteHotelController($pdo);
+
+// Handle deletion if a delete request is made
+if (isset($_GET['delete']) && isset($_GET['hotel_id'])) {
+    $hotel_id = intval($_GET['hotel_id']); // Ensure it's an integer
+    $deleteController->deleteHotel($hotel_id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +38,6 @@ $hotels = $hotelController->displayHotels();
     <main class="main-content">
         <section class="admin-intro">
             <p>Welcome, Admin! Use the tools below to edit, update, or delete hotels.</p>
-            <p>Ensure all hotel information is accurate and up-to-date.</p>
         </section>
 
         <section class="hotel-cards">
@@ -38,17 +45,27 @@ $hotels = $hotelController->displayHotels();
             <div class="card-container">
                 <?php foreach ($hotels as $hotel): ?>
                     <div class="hotel-card">
-                        <img src="<?php echo $hotel['image']; ?>" alt="<?php echo $hotel['hotel_name']; ?>">
-                        <h3><?php echo $hotel['hotel_name']; ?></h3>
-                        <p><?php echo $hotel['description']; ?></p>
-                        <p>Location: <?php echo $hotel['location']; ?></p>
+                        <img src="<?php echo htmlspecialchars($hotel['image']); ?>" alt="<?php echo htmlspecialchars($hotel['hotel_name']); ?>">
+                        <h3><?php echo htmlspecialchars($hotel['hotel_name']); ?></h3>
+                        <p><?php echo htmlspecialchars($hotel['description']); ?></p>
+                        <p>Location: <?php echo htmlspecialchars($hotel['location']); ?></p>
                         <!-- Admin Edit and Delete buttons -->
-                        <a href="edit-hotel.php?hotel_id=<?php echo $hotel['hotel_id']; ?>" class="edit-btn">Edit</a>
-                        <a href="delete-hotel.php?hotel_id=<?php echo $hotel['hotel_id']; ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this hotel?');">Delete</a>
+                        <a href="edit-hotel.php?hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="edit-btn">Edit</a>
+                        <!-- Corrected delete button passing the correct hotel_id -->
+                        <a href="?delete=true&hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="delete-btn" 
+                           onclick="return confirm('Are you sure you want to delete hotel ID: <?php echo intval($hotel['hotel_id']); ?> - <?php echo htmlspecialchars($hotel['hotel_name']); ?>?');">
+                           Delete
+                        </a>
                     </div>
                 <?php endforeach; ?>
             </div>
         </section>
+
+        <?php if (isset($_GET['success'])): ?>
+            <p class="success-msg">Hotel deleted successfully!</p>
+        <?php elseif (isset($_GET['error'])): ?>
+            <p class="error-msg">Failed to delete the hotel. Please try again.</p>
+        <?php endif; ?>
     </main>
 
     <div class="footer_div">
