@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../controller/deleteHotelController.php';
 // Initialize hotel and delete controllers
 $hotelController = new HotelController($pdo);
 $hotels = $hotelController->displayHotels();
+
 $deleteController = new DeleteHotelController($pdo);
 
 // Handle deletion if a delete request is made
@@ -50,7 +51,8 @@ if (isset($_GET['delete']) && isset($_GET['hotel_id'])) {
                         <p><?php echo htmlspecialchars($hotel['description']); ?></p>
                         <p>Location: <?php echo htmlspecialchars($hotel['location']); ?></p>
                         <!-- Admin Edit and Delete buttons -->
-                        <a href="edit-hotel.php?hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="edit-btn">Edit</a>
+                        <a href="/admin-edit-hotel?hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="edit-btn">Edit</a>
+
                         <!-- Corrected delete button passing the correct hotel_id -->
                         <a href="?delete=true&hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="delete-btn" 
                            onclick="return confirm('Are you sure you want to delete hotel ID: <?php echo intval($hotel['hotel_id']); ?> - <?php echo htmlspecialchars($hotel['hotel_name']); ?>?');">

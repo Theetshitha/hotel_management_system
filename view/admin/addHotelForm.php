@@ -13,13 +13,12 @@
 
     <main class="form-container">
         <div class="form-header">
-        <h2>Add Hotel</h2>
-
-        <a href="/admin-dashboard"><button class="btn-primary">Back</button></a>
+            <h2>Add Hotel</h2>
+            <a href="/admin-dashboard"><button class="btn-primary">Back</button></a>
         </div>
 
         <form action="../../controller/addHotelController.php" method="POST" enctype="multipart/form-data" class="add-hotel-form">
-            
+            <!-- Hotel Information -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="hotel_name">Hotel Name</label>
@@ -37,13 +36,12 @@
                 </div>
             </div>
 
-           
+            <!-- Pricing and Status -->
             <div class="form-row">
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" step="0.01" id="price" name="price" required>
-            </div>
-
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" step="0.01" id="price" name="price" required>
+                </div>
 
                 <div class="form-group">
                     <label for="availability">Availability</label>
@@ -62,7 +60,7 @@
                 </div>
             </div>
 
-            
+            <!-- Hotel Description -->
             <div class="form-row">
                 <div class="form-group full-width">
                     <label for="description">Hotel Description</label>
@@ -70,17 +68,17 @@
                 </div>
             </div>
 
-           
+            <!-- Hotel Images -->
             <div class="form-row">
                 <div class="form-group full-width">
-                    <label for="hotel_image">Upload Hotel Image</label>
+                    <label for="hotel_image">Upload Hotel Images</label>
                     <input type="file" id="hotel_image" name="hotel_image[]" accept="image/*" multiple>
                 </div>
             </div>
 
             <h3>Add Services</h3>
 
-           
+            <!-- Service Information -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="service_name">Service Name</label>
@@ -101,7 +99,7 @@
                 </div>
             </div>
 
-           
+            <!-- Service Description -->
             <div class="form-row">
                 <div class="form-group full-width">
                     <label for="service_description">Service Description</label>
@@ -109,7 +107,7 @@
                 </div>
             </div>
 
-            
+            <!-- Service Images -->
             <div class="form-row">
                 <div class="form-group full-width">
                     <label for="service_image">Upload Service Images</label>
@@ -117,15 +115,14 @@
                 </div>
             </div>
 
-            
+            <!-- Submit and Reset Buttons -->
             <div class="form-group">
                 <button type="submit" class="btn-primary">Add Hotel</button>
                 <button type="reset" class="btn-primary">Reset</button>
             </div>
         </form>
-        
     </main>
-   
+
     <div class="footer_div">
         <?php include __DIR__ . '/../partials/footer.php'; ?>
     </div>

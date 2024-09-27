@@ -63,4 +63,85 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Failed to add hotel. Please try again.";
     }
 }
+// Fetch specific hotel data by ID
+function getHotelById($hotel_id) {
+    global $pdo;
+    $sql = "SELECT * FROM tbl_hms_hotel WHERE hotel_id = :hotel_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':hotel_id' => $hotel_id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Fetch services by hotel ID
+function getServicesByHotelId($hotel_id) {
+    global $pdo;
+    $sql = "SELECT * FROM tbl_hms_service WHERE hotel_id = :hotel_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':hotel_id' => $hotel_id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Update hotel data in the database
+function updateHotel($hotel_id, $hotel_name, $location, $no_of_rooms, $price_per_room, $availability, $verified, $description, $hotel_images) {
+    global $pdo;
+    
+    // Calculate the total price
+    $total_price = $price_per_room * $no_of_rooms;
+
+    try {
+        // Update hotel details
+        $sql = "UPDATE tbl_hms_hotel 
+                SET hotel_name = :hotel_name, location = :location, no_of_rooms = :no_of_rooms, price = :price, 
+                    price_per_room = :price_per_room, availability = :availability, verified = :verified, description = :description
+                WHERE hotel_id = :hotel_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':hotel_name' => $hotel_name,
+            ':location' => $location,
+            ':no_of_rooms' => $no_of_rooms,
+            ':price' => $total_price,
+            ':price_per_room' => $price_per_room,
+            ':availability' => $availability,
+            ':verified' => $verified,
+            ':description' => $description,
+            ':hotel_id' => $hotel_id
+        ]);
+
+        // Update hotel images (similar to addHotel function)
+        // You can add logic to remove old images or overwrite them if necessary
+
+        return true;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
+
+// Update service data
+function updateService($hotel_id, $service_name, $service_price, $service_availability, $service_description, $service_images) {
+    global $pdo;
+
+    try {
+        // Update service details
+        $sql = "UPDATE tbl_hms_service 
+                SET service_name = :service_name, price = :price, availability = :availability, description = :description
+                WHERE hotel_id = :hotel_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':service_name' => $service_name,
+            ':price' => $service_price,
+            ':availability' => $service_availability,
+            ':description' => $service_description,
+            ':hotel_id' => $hotel_id
+        ]);
+
+        // Update service images (similar to addService function)
+
+        return true;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
+
 ?>

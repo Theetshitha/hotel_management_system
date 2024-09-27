@@ -27,6 +27,11 @@ switch ($requestUri) {
         include __DIR__ . '/../view/admin/addHotelForm.php';
         break;
 
+    case '/admin-edit-hotel':
+        AuthMiddleware::checkAdmin();
+        include __DIR__ . '/../view/admin/editHotelForm.php';
+        break;
+    
     case '/admin-manage-hotels':
         AuthMiddleware::checkAdmin();
         include __DIR__ . '/../view/admin/adminHotelListing.php';

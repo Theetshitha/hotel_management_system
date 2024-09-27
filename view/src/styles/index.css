@@ -12,6 +12,8 @@
     --input-border-color: #ccc;
     --input-error-border-color: #ff0000;
     --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --banner-background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -28,7 +30,7 @@ body {
 }
 
 .banner {
-    background-image: url('https://images.pexels.com/photos/3201765/pexels-photo-3201765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
+    background-image: url('https://images.pexels.com/photos/3201765/pexels-photo-3201765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
     background-size: cover;
     background-position: center;
     color: var(--primary-color-dark);
@@ -57,7 +59,7 @@ body {
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     justify-items: center;
 }
@@ -65,38 +67,44 @@ body {
 .hotel-card {
     background: var(--form-background);
     border-radius: 8px;
-    box-shadow: 0 4px 10px var(--box-shadow-color);
+    box-shadow: var(--card-shadow);
     overflow: hidden;
     text-align: center;
     width: 100%;
-    max-width: 300px;
-    height: 400px;
+    max-width: 260px;
+    height: 390px;
+    transition: transform 0.3s ease;
     margin-top: 1rem;
-    transition: transform 0.3s;
+    padding: 20px;
 }
 
 .hotel-card:hover {
-    transform: translateY(-10px); /* Lift the card on hover */
+    transform: translateY(-10px);
 }
 
 .hotel-card img {
-    width: 100%;
-    height: 180px;
+    max-width: 100%;
+    height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid var(--input-border-color);
 }
 
 .hotel-card h3 {
-    margin: 15px 0 10px;
+    font-size: 1.5rem;
     color: var(--primary-color);
+    height: 30px;
+    margin: 15px 0;
+    overflow: hidden;
 }
 
 .hotel-card p {
-    padding: 0 15px 15px;
-    color: #555;
-    font-size: 14px; /* Smaller text for a cleaner look */
+    font-size: 1rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 10px;
+    height: 20px;
+    overflow: hidden;
 }
 
-/* Button styling for View Details */
 .view-details-btn {
     display: inline-block;
     background-color: var(--secondary-color);
@@ -112,21 +120,15 @@ body {
 
 .view-details-btn:hover {
     background-color: var(--primary-color-dark);
-    transform: translateY(-3px); /* Slight lift effect on hover */
+    transform: translateY(-3px);
 }
 
-/* Responsive styling */
 @media screen and (max-width: 768px) {
-    .banner-content {
-        height: 200px;
-        padding: 20px;
-    }
-
     .hotel-card {
-        max-width: 90%; /* Make cards more flexible on smaller screens */
+        max-width: 90%;
     }
 
     .view-details-btn {
-        padding: 8px 16px; /* Slightly smaller button on mobile */
+        padding: 8px 16px;
     }
 }
