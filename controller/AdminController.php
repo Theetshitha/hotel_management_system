@@ -79,8 +79,8 @@ class AdminController {
         session_start(); // Ensure the session is started
         session_destroy(); // Destroy all session data
 
-        // Redirect to login page after logout
-        header("Location: /admin-login");
+        // Redirect to home page after logout
+        header("Location: /");
         exit();
     }
 }

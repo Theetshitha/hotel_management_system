@@ -1,0 +1,201 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-dark: #1a252f;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --form-background: #ffffff;
+    --button-hover-color: var(--primary-color-light);
+    --error-color: #ff0000;
+    --input-border-color: #ccc;
+    --input-error-border-color: #ff0000;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --tooltip-bg-color: #fff8dc;
+    --tooltip-text-color: #333;
+    --tooltip-border-color: #ccc;
+    --tooltip-valid-color: green;
+    --tooltip-invalid-color: red;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+form {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--form-background);
+    padding: 20px;
+    box-shadow: 0 0 10px var(--box-shadow-color);
+    border-radius: 8px;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.form-group .error-message {
+    color: var(--error-color);
+    font-size: 12px;
+}
+
+.form-group .input-error {
+    border: 1px solid var(--input-error-border-color);
+}
+
+span {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+span a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    top: 0;
+    right: -220px; /* Adjust this value to position the tooltip */
+    background-color: var(--tooltip-bg-color);
+    border: 1px solid var(--tooltip-border-color);
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px var(--box-shadow-color);
+    width: 200px;
+    font-size: 12px;
+    color: var(--tooltip-text-color);
+    display: none; /* Hidden by default */
+    z-index: 10;
+}
+
+#nameTooltip {
+    top: 40px;
+}
+
+#emailTooltip {
+    top: 40px;
+}
+
+#passwordTooltip {
+    top: 40px;
+}
+
+#confirmPasswordTooltip {
+    top: 40px;
+    color: var(--accent-color);
+}
+
+#profileImageTooltip {
+    top: 40px;
+    color: var(--accent-color);
+}
+
+.tooltip ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.tooltip ul li {
+    margin-bottom: 5px;
+}
+
+/* Icons for valid and invalid states */
+.tooltip .invalid::before {
+    content: ' ✗ ';
+    color: var(--tooltip-invalid-color);
+}
+
+.tooltip .valid::before {
+    content: ' ✔ ';
+    color: var(--tooltip-valid-color);
+}
+
+.tooltip ul li.valid {
+    color: var(--tooltip-valid-color);
+}
+
+.tooltip ul li.invalid {
+    color: var(--tooltip-invalid-color);
+}
+
+input:focus + .tooltip,
+.input-wrapper input:focus + .tooltip {
+    display: block; /* Show tooltip on input focus */
+}
+
+
+#emailTooltip {
+    margin-top: -12px;
+    margin-right: -89px;
+    width: 276px;
+}
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .tooltip {
+        right: auto;
+        left: 0;
+        top: 100%;
+        margin-top: 5px;
+    }
+}

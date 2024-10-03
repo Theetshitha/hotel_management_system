@@ -45,6 +45,16 @@ switch ($requestUri) {
         $controller->logout(); 
         break;
 
+    // User routes
+    case '/user-login':
+        include __DIR__ . '/../view/user/userLogin.php';
+        break;
+
+    case '/user-signup':
+        include __DIR__ . '/../view/user/userSignup.php';
+        break;
+
+
     default:
         http_response_code(404);
         echo "Page not found.";

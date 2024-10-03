@@ -10,9 +10,11 @@ session_start(); // Start the session to access login status
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 
 </head>
- <!-- Conditional rendering based on login status -->
-
- <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true): ?>
+                    <?php
+                    // Check if either admin or user is logged in
+                    if ((isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) || 
+                        (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true)):
+                    ?>
  <!-- After login navbar -->
 
     <style>
@@ -303,7 +305,11 @@ session_start(); // Start the session to access login status
              </ul>  
             
                     <li class="profile dropdown">
-                    <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true): ?>
+                    <?php
+                    // Check if either admin or user is logged in
+                    if ((isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) || 
+                        (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true)):
+                    ?>
                         <!-- Profile dropdown menu visible after login -->
                         <a href="#" class="profile-icon">
                             <i class="fa fa-user"></i>
@@ -540,7 +546,7 @@ session_start(); // Start the session to access login status
             </ul>  
            </li>  
          </ul>  
-        <a href="/admin-login" class="login-btn">Login</a>  
+        <a href="/user-login" class="login-btn">Login</a>  
         </div>                                  
         </nav>  
     </header>  
