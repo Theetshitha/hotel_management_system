@@ -44,7 +44,7 @@ $hotels = $hotelController->displayHotels();
                 <p><?php echo $hotel['description']; ?></p>
                 <p>Location: <?php echo $hotel['location']; ?></p>
                 <!-- View Details button -->
-                <a href="/view/hotelDetailPage.php?hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="view-details-btn">View Details</a>
+                <a href="/hotel-detailed-page?hotel_id=<?php echo intval($hotel['hotel_id']); ?>" class="view-details-btn">View Details</a>
             </div>
         <?php endforeach; ?>
     </div>

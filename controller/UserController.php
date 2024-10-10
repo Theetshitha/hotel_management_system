@@ -7,7 +7,6 @@ class UserController {
     private $userModel;
 
     public function __construct() {
-        // Instantiate the UserModel
         $this->userModel = new UserModel();
     }
 
@@ -65,6 +64,12 @@ class UserController {
                 // Set session variables for logged-in user
                 $_SESSION['user_logged_in'] = true;
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['user_id'] = $user['user_id']; // Store user_id in session
+
+                echo json_encode([
+                    'status' => 'success',
+                    'user_id' => $user['user_id']
+                ]);
 
                 // Redirect to the user dashboard
                 header("Location: /");

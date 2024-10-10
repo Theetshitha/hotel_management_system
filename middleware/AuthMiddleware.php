@@ -17,5 +17,15 @@ class AuthMiddleware {
             exit();
         }
     }
+
+    public static function checkAdminOrUser() {
+        if (
+            (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) &&
+            (!isset($_SESSION['user_logged_in']) || !$_SESSION['user_logged_in'])
+        ) {
+            header("Location: /user-login"); // Redirect to user login if neither is logged in
+            exit();
+        }
+    }
 }
 ?>

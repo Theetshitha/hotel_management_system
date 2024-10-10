@@ -10,10 +10,6 @@ switch ($requestUri) {
     case '/':
         include __DIR__ . '/../view/home.php';
         break;
-    case '/HotelHub':
-        include __DIR__ . '/../view/home.php';
-        break;
-        
     case '/admin-login':
         include __DIR__ . '/../view/admin/adminLogin.php';
         break;
@@ -40,6 +36,7 @@ switch ($requestUri) {
     case '/admin-signup':
         include __DIR__ . '/../view/admin/adminSignup.php';
         break;
+
     
     case '/logout':
         $controller->logout(); 
@@ -54,6 +51,10 @@ switch ($requestUri) {
         include __DIR__ . '/../view/user/userSignup.php';
         break;
 
+    case '/hotel-detailed-page':
+        AuthMiddleware::checkAdminOrUser();
+        include __DIR__ . '/../view/hotelDetailPage.php';
+        break;
 
     default:
         http_response_code(404);

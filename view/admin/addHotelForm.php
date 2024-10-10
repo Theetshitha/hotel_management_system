@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Hotel</title>
     <link rel="stylesheet" href="/view/src/styles/addHotelForm.css">
+    <style>
+        .remove-service-btn {
+            background-color: red;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <div id="navbarHeader">
@@ -78,42 +88,11 @@
 
             <h3>Add Services</h3>
 
-            <!-- Service Information -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="service_name">Service Name</label>
-                    <input type="text" id="service_name" name="service_name" required>
-                </div>
+            <!-- Add Service Button -->
+            <button type="button" id="addServiceBtn" class="btn-primary">Add Service</button>
 
-                <div class="form-group">
-                    <label for="service_price">Service Price</label>
-                    <input type="number" step="0.01" id="service_price" name="service_price" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="service_availability">Service Availability</label>
-                    <select id="service_availability" name="service_availability" required>
-                        <option value="1">Available</option>
-                        <option value="0">Not Available</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Service Description -->
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="service_description">Service Description</label>
-                    <textarea id="service_description" name="service_description" rows="4" required></textarea>
-                </div>
-            </div>
-
-            <!-- Service Images -->
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="service_image">Upload Service Images</label>
-                    <input type="file" id="service_image" name="service_image[]" accept="image/*" multiple>
-                </div>
-            </div>
+            <!-- Service Fields Container -->
+            <div id="serviceFieldsContainer"></div>
 
             <!-- Submit and Reset Buttons -->
             <div class="form-group">
@@ -126,6 +105,62 @@
     <div class="footer_div">
         <?php include __DIR__ . '/../partials/footer.php'; ?>
     </div>
-    
+
+    <script>
+        // Service section template
+        const serviceTemplate = `
+            <div class="service-section">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service_name">Service Name</label>
+                        <input type="text" id="service_name" name="service_name[]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service_price">Service Price</label>
+                        <input type="number" step="0.01" id="service_price" name="service_price[]" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service_availability">Service Availability</label>
+                        <select id="service_availability" name="service_availability[]" required>
+                            <option value="1">Available</option>
+                            <option value="0">Not Available</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="service_description">Service Description</label>
+                        <textarea id="service_description" name="service_description[]" rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="service_image">Upload Service Images</label>
+                        <input type="file" id="service_image" name="service_image[]" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <button type="button" class="remove-service-btn">Remove Service</button>
+                <hr>
+            </div>
+        `;
+
+        // Add service section dynamically
+        document.getElementById('addServiceBtn').addEventListener('click', function() {
+            const serviceFieldsContainer = document.getElementById('serviceFieldsContainer');
+            const div = document.createElement('div');
+            div.innerHTML = serviceTemplate;
+            serviceFieldsContainer.appendChild(div);
+
+            // Add event listener for remove button
+            div.querySelector('.remove-service-btn').addEventListener('click', function() {
+                div.remove();
+            });
+        });
+    </script>
 </body>
 </html>

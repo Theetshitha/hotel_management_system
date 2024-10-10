@@ -16,16 +16,9 @@
         <section class="dashboard-section">
             <h2>Manage Hotels</h2>
             <p>View and manage all the hotels listed in the system. Add new hotels or edit the details of existing ones.</p>
-            <button class="btn-primary" onclick="addHotel()">Add Hotel</button>
-            <div id="hotel-list">
-                <!-- List of hotels will be displayed here -->
-            </div>
-        </section>
-
-        <section class="dashboard-section">
-            <h2>Manage Rooms & Services</h2>
-            <p>Assign rooms and services to the hotels. Add new rooms, edit services, or remove listings as necessary.</p>
+            <p> Add new rooms, edit services, or remove listings as necessary.</p>
             <button class="btn-primary" onclick="viewHotels()" >View Hotels</button>
+            <button class="btn-primary" onclick="addHotel()">Add Hotel</button>
         </section>
 
         <section class="dashboard-section">

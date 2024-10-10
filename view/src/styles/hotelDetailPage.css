@@ -135,3 +135,134 @@ p {
 .service-images img:hover {
     transform: scale(1.05);
 }
+/* Book Room Button */
+.book-room-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background-color var(--transition-speed);
+}
+
+.book-room-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Popup form styling */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: var(--form-background);
+    padding: 20px;
+    left: 350px;
+    top: 50px;
+    max-width: 500px;
+    max-height: 500px;
+    overflow: hidden;     
+    width: 100%;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    animation: popup-animation 0.3s ease-out;
+    border-radius: 12px; 
+    overflow-y: scroll;
+}
+
+.popup-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color); 
+    border-radius: 10px; 
+}
+
+
+@keyframes popup-animation {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.popup-content .close {
+    position: sticky;
+    top: 10px;
+    left: 500px;   
+    color: var(--primary-color-dark);
+    border: 1pxx solid var(--error-color);
+    border-radius: 16px;
+    padding: 5px 10px;
+    background-color: var(--error-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+#form_title{
+    margin-top: -20px;
+}
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-color-dark);
+    font-size: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color var(--transition-speed);
+}
+
+.submit-btn:hover {
+    background-color: var(--error-color);
+}
+
+
+/* scrollbar styling */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); 
+
+}
