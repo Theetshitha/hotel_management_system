@@ -1,13 +1,13 @@
 <?php
-require __DIR__ . '/../config/config.php'; // Include your DB connection settings
-require __DIR__ . '/../model/AdminModel.php'; // Include the model for database interaction
-session_start(); // Start the session
+require __DIR__ . '/../config/config.php'; 
+require __DIR__ . '/../model/AdminModel.php';
+session_start(); 
 
 class AdminController {
     private $adminModel;
 
     public function __construct() {
-        // Instantiate the AdminModel
+        
         $this->adminModel = new AdminModel();
     }
 
@@ -45,7 +45,7 @@ class AdminController {
                     echo "Failed to signup admin.";
                 }
             } catch (Exception $e) {
-                // Handle any errors (e.g. duplicate entry)
+                // Handle any errors (duplicate mail)
                 echo $e->getMessage();
             }
         }
@@ -76,9 +76,8 @@ class AdminController {
 
     // Handle admin logout
     public function logout() {
-        session_start(); // Ensure the session is started
-        session_destroy(); // Destroy all session data
-
+        session_start(); 
+        session_destroy(); 
         // Redirect to home page after logout
         header("Location: /");
         exit();
