@@ -13,5 +13,20 @@ class HotelController {
         $hotels = $this->hotelModel->getAllHotelsWithImages();
         return $hotels;
     }
+
+    // Fetch all countries
+    public function getCountries() {
+        return $this->hotelModel->getAllCountries();
+    }
+
+    // Fetch states by country ID
+    public function getStates($country_id) {
+        return $this->hotelModel->getStatesByCountry($country_id);
+    }
+
+    // Fetch cities by state ID
+    public function getCities($state_id) {
+        return $this->hotelModel->getCitiesByState($state_id);
+    }
 }
 ?>

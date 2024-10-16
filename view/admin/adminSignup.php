@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Signup</title>
     <link rel="stylesheet" href="/view/src/styles/adminSignup.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div id="navbarHeader">
@@ -63,13 +64,13 @@
         <div class="form-group">
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-Enter your password">
-            <div class="tooltip" id="confirmPasswordTooltip"></div>
+            <div class="tooltip" id="confirmPasswordTooltip"> Password doesn't matched</div>
         </div>
 
         <div class="form-group">
             <label for="profile_image">Profile Image:</label>
             <input type="file" id="profile_image" name="profile_image" accept="image/*" placeholder="Upload your Profile Image">
-            <div class="tooltip" id="profileImageTooltip"></div>
+            <!-- <div class="tooltip" id="profileImageTooltip"></div> -->
         </div>
 
         <div class="form-group">

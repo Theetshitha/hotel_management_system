@@ -16,15 +16,15 @@
             color: red;
             font-size: 0.9em;
         }
-        #emailTooltip{
-            margin-top: -38px;
-            margin-left: 0px;
-            width: 300px;
+        #emailTooltip1{
+            top: 40px;
+            right: -300px;
+            width: 280px;
         }
-        #passwordTooltip{
-            margin-top: -37px;
+        #passwordTooltip1{
+            margin-top: 15px;
             margin-left: 0px;
-            width: 320px;
+            width: 195px;
          } 
     </style>
 </head>
@@ -39,12 +39,12 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" placeholder="Enter your email">
-            <div id="emailTooltip" class="tooltip">Invalid email. Please enter a valid email.</div>
+            <div id="emailTooltip1" class="tooltip emailTooltip" style="margin-top: -12px; margin-left: 0px; width: 280px;">Invalid email. Please enter a valid email.</div>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter your password">
-            <div id="passwordTooltip" class="tooltip">Wrong password. Please enter a valid password.</div>
+            <div id="passwordTooltip1" class="tooltip passwordTooltip">Wrong password. Please enter a valid password.</div>
         </div>
         <div class="form-group">
             <button type="submit" name="user_login">Login</button>
