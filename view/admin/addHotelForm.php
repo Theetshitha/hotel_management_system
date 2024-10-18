@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../controller/HotelController.php';
+
+// Initialize the controller
+$hotelController = new HotelController($pdo);
+$countries = $hotelController->getCountries(); // Fetch countries for dropdown
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +45,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" required>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
                 </div>
 
                 <div class="form-group">
@@ -45,7 +54,36 @@
                     <input type="number" id="no_of_rooms" name="no_of_rooms" min="1" required>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group">
+                <select id="country-select" class="filter-select" name="country">
+                        <option value="">Select Country</option>
+                        <?php foreach ($countries as $country): ?>
+                            <option value="<?php echo $country['country_id']; ?>">
+                                <?php echo $country['country_name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
 
+                   
+                </div>
+
+                <div class="form-group">
+                <select id="state-select" class="filter-select" name="state" disabled>
+                        <option value="">Select State</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    
+                    <select id="city-select" class="filter-select" name="city" disabled>
+                        <option value="">Select City</option>
+                    </select>
+
+                </div>
+            </div>
+
+          
             <!-- Pricing and Status -->
             <div class="form-row">
                 <div class="form-group">
@@ -162,5 +200,7 @@
             });
         });
     </script>
+    <script src="/view/src/script/filter.js"></script>
+
 </body>
 </html>
