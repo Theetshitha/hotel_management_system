@@ -9,11 +9,11 @@ class BookingController {
 
     public function __construct($pdo) {
         $this->bookingModel = new BookingModel($pdo);
-        $this->hotelModel = new HotelModel($pdo); // Add HotelModel to handle room updates
+        $this->hotelModel = new HotelModel($pdo); 
     }
 
     public function bookRoom($bookingData) {
-        // Attempt to create the booking
+        // create the booking
         if ($this->bookingModel->createBooking($bookingData)) {
             // If booking is successful, reduce the number of available rooms
             return $this->hotelModel->updateNoOfRooms($bookingData['hotel_id'], $bookingData['no_of_rooms']);
@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Fetch user ID from the session
     $user_id = $_SESSION['user_id'] ?? null;
 
     if (!$user_id) {

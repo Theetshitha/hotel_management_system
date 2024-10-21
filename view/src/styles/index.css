@@ -105,6 +105,7 @@ body {
     overflow: hidden;
 }
 
+
 .view-details-btn {
     display: inline-block;
     background-color: var(--secondary-color);
@@ -113,6 +114,7 @@ body {
     margin-top: 10px;
     text-decoration: none;
     border-radius: 5px;
+    border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

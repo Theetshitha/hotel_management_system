@@ -13,7 +13,7 @@ class HotelDetailController {
         return $this->hotelDetailModel->fetchHotelDetails($hotel_id);
     }
 
-    // Fetch services for the given hotel_id
+    // Fetch services based on hotel_id
     public function getHotelServices($hotel_id) {
         $services = $this->hotelDetailModel->fetchHotelServices($hotel_id);
         

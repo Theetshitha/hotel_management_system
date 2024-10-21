@@ -62,5 +62,53 @@ class HotelModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getAllFilteredHotels($filters) {
+        $sql = "SELECT h.hotel_id, h.hotel_name, h.location, h.description, i.image  
+                FROM tbl_hms_hotel h  
+                LEFT JOIN tbl_hms_hotel_images i ON h.hotel_id = i.hotel_id  
+                WHERE 1=1";  
+    
+        
+        if (!empty($filters['city'])) {
+            $sql .= " AND h.location = :city";
+        } elseif (!empty($filters['state'])) {
+            $sql .= " AND h.state = :state";
+        } elseif (!empty($filters['country'])) {
+            $sql .= " AND h.country = :country";
+        }
+    
+        // Apply price filter
+        if (!empty($filters['price_range'])) {
+            list($start_price, $end_price) = explode('-', $filters['price_range']);
+            if (strpos($filters['price_range'], '+') !== false) {
+                $sql .= " AND h.price_per_room >= :start_price";
+            } else {
+                $sql .= " AND h.price_per_room BETWEEN :start_price AND :end_price";
+            }
+        }
+    
+        $sql .= " GROUP BY h.hotel_id";
+        $stmt = $this->pdo->prepare($sql);
+    
+        // Bind parameters based on filters
+        if (!empty($filters['city'])) {
+            $stmt->bindParam(':city', $filters['city']);
+        } elseif (!empty($filters['state'])) {
+            $stmt->bindParam(':state', $filters['state']);
+        } elseif (!empty($filters['country'])) {
+            $stmt->bindParam(':country', $filters['country']);
+        }
+    
+        if (!empty($filters['price_range'])) {
+            $stmt->bindParam(':start_price', $start_price);
+            if (!strpos($filters['price_range'], '+') !== false) {
+                $stmt->bindParam(':end_price', $end_price);
+            }
+        }
+    
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }
 ?>

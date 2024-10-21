@@ -10,7 +10,7 @@ class UserController {
         $this->userModel = new UserModel();
     }
 
-    // Handle user signup
+    // user signup
     public function signup() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $_POST['username'];
@@ -22,7 +22,7 @@ class UserController {
             $phone_number = $_POST['phone_number'] ?? null;
             $hobbies = $_POST['hobbies'] ?? null;
 
-            // Handle file upload for profile image
+            // file upload for profile image
             if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
                 $fileName = basename($_FILES["profile_image"]["name"]);
                 $targetDir = __DIR__ . "/../uploads/";
@@ -51,7 +51,7 @@ class UserController {
         }
     }
 
-    // Handle user login
+    // user login
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
@@ -80,7 +80,7 @@ class UserController {
         }
     }
 
-    // Handle user logout
+    // user logout
     public function logout() {
         session_start();
         session_destroy();

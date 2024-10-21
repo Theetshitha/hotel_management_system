@@ -1,5 +1,6 @@
 document.getElementById('country-select').addEventListener('change', function() {
     var countryId = this.value;
+    console.log('hi');
     if (countryId) {
         fetch(`/controller/ajaxHandler.php?action=getStates&country_id=${countryId}`)
             .then(response => response.json())
@@ -22,6 +23,8 @@ document.getElementById('country-select').addEventListener('change', function() 
 
 document.getElementById('state-select').addEventListener('change', function() {
     var stateId = this.value;
+    console.log('hi2');
+
     if (stateId) {
         fetch(`/controller/ajaxHandler.php?action=getCities&state_id=${stateId}`)
             .then(response => response.json())
