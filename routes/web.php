@@ -1,8 +1,11 @@
 <?php
+// Ensure config.php is included to access the $pdo object
+require __DIR__ . '/../config/config.php'; 
 require __DIR__ . '/../middleware/AuthMiddleware.php';
 require __DIR__ . '/../controller/AdminController.php';
 
-$controller = new AdminController();
+// Pass the $pdo object to AdminController when initializing it
+$controller = new AdminController($pdo);
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // Route based on the URL path
@@ -37,7 +40,6 @@ switch ($requestUri) {
         include __DIR__ . '/../view/admin/adminSignup.php';
         break;
 
-    
     case '/logout':
         $controller->logout(); 
         break;
@@ -55,6 +57,11 @@ switch ($requestUri) {
         AuthMiddleware::checkAdminOrUser();
         include __DIR__ . '/../view/hotelDetailPage.php';
         break;
+
+    case '/profile-page':
+        AuthMiddleware::checkAdminOrUser();
+        include __DIR__ . '/../view/profile.php';
+        break;    
 
     default:
         http_response_code(404);

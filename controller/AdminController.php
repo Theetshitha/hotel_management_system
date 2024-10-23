@@ -6,9 +6,9 @@ session_start();
 class AdminController {
     private $adminModel;
 
-    public function __construct() {
-        
-        $this->adminModel = new AdminModel();
+    public function __construct($pdo) {
+        // Pass the PDO object to AdminModel
+        $this->adminModel = new AdminModel($pdo);
     }
 
     // Handle admin signup
@@ -36,7 +36,6 @@ class AdminController {
 
             try {
                 if ($this->adminModel->insertAdmin($admin_name, $admin_email, $admin_password, $profile_image)) {
-
                     header("Location: ../view/admin/adminLogin.php");
                     exit();
                 } else {
@@ -58,7 +57,9 @@ class AdminController {
             $admin = $this->adminModel->getAdminByEmail($admin_email);
 
             if ($admin && password_verify($admin_password, $admin['admin_password'])) {
+                // Storing admin ID and other details in session
                 $_SESSION['admin_logged_in'] = true;
+                $_SESSION['admin_id'] = $admin['admin_id'];
                 $_SESSION['admin_name'] = $admin['admin_name'];
 
                 header("Location: /admin-dashboard");
@@ -72,20 +73,20 @@ class AdminController {
     // Handle admin logout
     public function logout() {
         session_start(); 
-        session_destroy(); 
+        session_unset(); // Unset all session variables
+        session_destroy(); // Destroy session
         header("Location: /");
         exit();
     }
 }
 
+// Ensure that PDO is passed when initializing AdminController
+$controller = new AdminController($pdo);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['admin_login'])) {
-    $controller = new AdminController();
     $controller->login();
 } elseif (isset($_GET['action']) && $_GET['action'] === 'logout') {
-    $controller = new AdminController();
     $controller->logout();
 } else {
-    $controller = new AdminController();
     $controller->signup();
 }
-?>

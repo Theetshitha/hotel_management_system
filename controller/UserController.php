@@ -6,8 +6,9 @@ session_start(); // Start the session
 class UserController {
     private $userModel;
 
-    public function __construct() {
-        $this->userModel = new UserModel();
+    // Update the constructor to accept $pdo
+    public function __construct($pdo) {
+        $this->userModel = new UserModel($pdo);
     }
 
     // user signup
@@ -91,13 +92,16 @@ class UserController {
 
 // Handle POST requests for signup and login
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_login'])) {
-    $controller = new UserController();
+    // Pass $pdo to UserController
+    $controller = new UserController($pdo);
     $controller->login();
 } elseif (isset($_GET['action']) && $_GET['action'] === 'logout') {
-    $controller = new UserController();
+    // Pass $pdo to UserController
+    $controller = new UserController($pdo);
     $controller->logout();
 } else {
-    $controller = new UserController();
+    // Pass $pdo to UserController
+    $controller = new UserController($pdo);
     $controller->signup();
 }
 ?>

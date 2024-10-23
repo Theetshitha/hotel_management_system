@@ -312,7 +312,7 @@
                             <i class="fa fa-user"></i>
                         </a>
                         <ul class="dropdown-menu" id="profileDropdown">
-                            <li><a href="#">View Profile</a></li>
+                            <li><a href="/view/profile.php">View Profile</a></li>
                             <li><a href="/logout">Logout</a></li> <!-- Link to trigger logout -->
                         </ul>
                     <?php else: ?>
@@ -547,6 +547,6 @@
         </div>                                  
         </nav>  
     </header>  
-<?php endif; ?>
+   <?php endif; ?>
  </body>
 </html>

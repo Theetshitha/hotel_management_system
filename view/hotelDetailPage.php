@@ -5,7 +5,6 @@ require_once __DIR__ . '/../controller/hotelDetailController.php';
 $hotel_id = intval($_GET['hotel_id']);
 $hotelController = new HotelDetailController($pdo);
 
-// Fetch hotel, services, and images
 $hotelDetails = $hotelController->getHotelDetails($hotel_id);
 $hotelServices = $hotelController->getHotelServices($hotel_id);
 $hotelImages = $hotelController->getHotelImages($hotel_id);
@@ -33,7 +32,6 @@ $user_id = $_SESSION['user_id'];
         <h1><?php echo htmlspecialchars($hotelDetails['hotel_name']); ?></h1>
         <p class="location">Location: <?php echo htmlspecialchars($hotelDetails['location']); ?></p>
 
-        <!-- Add price_per_room and no_of_rooms display -->
         <p>Price per Room: ₹<?php echo number_format($hotelDetails['price_per_room'], 2); ?></p>
         <p>Number of Rooms Available: <?php echo htmlspecialchars($hotelDetails['no_of_rooms']); ?></p>
 
@@ -148,11 +146,9 @@ $user_id = $_SESSION['user_id'];
         let serviceTotal = 0;
         let totalPrice = 0;
 
-        // Disable past dates for check-in
         const today = new Date().toISOString().split('T')[0];
         checkInInput.setAttribute('min', today);
 
-        // Handle change for check-in and restrict checkout to be after check-in
         checkInInput.addEventListener('change', function() {
             const checkInDateValue = checkInInput.value;
             checkOutInput.setAttribute('min', checkInDateValue);
@@ -162,17 +158,14 @@ $user_id = $_SESSION['user_id'];
             updateTotalPrice();
         });
 
-        // Open popup form when "Book Room" button is clicked
         bookRoomBtn.addEventListener('click', function() {
             bookingPopup.style.display = 'block';
         });
 
-        // Close popup form when close button is clicked
         closeBtn.addEventListener('click', function() {
             bookingPopup.style.display = 'none';
         });
 
-        // Set default room price
         updateTotalPrice();
 
         // Calculate total price for rooms and services
@@ -214,7 +207,6 @@ $user_id = $_SESSION['user_id'];
             const checkOutDate = new Date(checkOutInput.value);
             const days = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)) || 1;
 
-            // Recalculate service total based on the current number of rooms
             serviceTotal = 0;
             document.querySelectorAll('.toggle-service').forEach(button => {
                 if (button.textContent === '−') { // Check if service is selected

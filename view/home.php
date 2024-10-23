@@ -203,7 +203,6 @@ document.getElementById('state-select').addEventListener('change', function() {
 });
 
 
-
-    </script>
+</script>
 </body>
 </html>
