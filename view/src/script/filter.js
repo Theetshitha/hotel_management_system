@@ -2,7 +2,7 @@ document.getElementById('country-select').addEventListener('change', function() 
     var countryId = this.value;
     console.log('hi');
     if (countryId) {
-        fetch(`/controller/ajaxHandler.php?action=getStates&country_id=${countryId}`)
+        fetch(`/controller/AddHotelajaxHandler.php?action=getStates&country_id=${countryId}`)
             .then(response => response.json())
             .then(data => {
                 const stateSelect = document.getElementById('state-select');
@@ -26,7 +26,7 @@ document.getElementById('state-select').addEventListener('change', function() {
     console.log('hi2');
 
     if (stateId) {
-        fetch(`/controller/ajaxHandler.php?action=getCities&state_id=${stateId}`)
+        fetch(`/controller/AddHotelajaxHandler.php?action=getCities&state_id=${stateId}`)
             .then(response => response.json())
             .then(data => {
                 const citySelect = document.getElementById('city-select');

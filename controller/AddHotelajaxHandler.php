@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../controller/HotelController.php';
+require_once __DIR__ . '/../controller/addHotelController.php';
+
 
 $hotelController = new HotelController($pdo);
 
@@ -20,11 +22,6 @@ if (isset($_GET['action'])) {
                 echo json_encode($cities);
             }
             break;
-        case 'filterHotels':
-            // Decode the JSON payload
-            $filters = json_decode(file_get_contents('php://input'), true);
-            $hotels = $hotelController->applyFilter($filters);
-            echo json_encode($hotels);
-            break;
     }
 }
+?>

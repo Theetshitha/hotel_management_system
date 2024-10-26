@@ -31,5 +31,6 @@ public function applyFilter($filters) {
     return $this->hotelModel->getAllFilteredHotels($filters);
 }
 
+
 }
 ?>

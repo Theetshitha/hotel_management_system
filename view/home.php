@@ -17,7 +17,6 @@ $states = $hotelController->getStates($filters['country']);
 $cities = $hotelController->getCities($filters['state']);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,13 +39,14 @@ $cities = $hotelController->getCities($filters['state']);
 
     <main class="main-content">
         <section class="introduction">
-            <p>Explore our wide range of hotels and book your stay today!</p>
+            <p>Explore our wide range of hotels and book your stay today! </p>
+
             <p>Book your stay with us and enjoy a comfortable and memorable experience.</p>
             <p>Thank you for choosing Hotel Hub for your travel needs. We look forward to serving you!</p>
         </section>
 
         <section class="filter-section">
-            <form id="hotel-filter-form" method="GET" action="">
+            <form id="hotel-filter-form">
                 <div class="filter-container">
                     <!-- Country Select -->
                     <select id="country-select" class="filter-select" name="country" data-country-name="">
@@ -85,16 +85,20 @@ $cities = $hotelController->getCities($filters['state']);
                     </select>
 
                     <!-- Price Range Select -->
-                    <select id="price-range" class="filter-select" name="price_range">
+                    <select id="price-range" class="filter-select">
                         <option value="">Select Price Range</option>
-                        <option value="0-5000" <?php echo $filters['price_range'] == '0-5000' ? 'selected' : ''; ?>>0 - 5000</option>
-                        <option value="5000-10000" <?php echo $filters['price_range'] == '5000-10000' ? 'selected' : ''; ?>>5000 - 10,000</option>
-                        <option value="10000-20000" <?php echo $filters['price_range'] == '10000-20000' ? 'selected' : ''; ?>>10,000 - 20,000</option>
-                        <option value="20000-50000" <?php echo $filters['price_range'] == '20000-50000' ? 'selected' : ''; ?>>20,000 - 50,000</option>
-                        <option value="50000+" <?php echo $filters['price_range'] == '50000+' ? 'selected' : ''; ?>>50,000+</option>
+                        <option value="100-1000">100 - 1000</option>
+                        <option value="1000-2000">1000 - 2000</option>
+                        <option value="2000-3000">2000 - 3000</option>
+                        <option value="3000-4000">3000 - 4000</option>
+                        <option value="4000-5000">4000 - 5000</option>
+                        <option value="5000-10000">5000 - 10,000</option>
+                        <option value="10000-20000">10,000 - 20,000</option>
+                        <option value="20000-50000">20,000 - 50,000</option>
+                        <option value="50000-60000">50,000 - 60,000</option>
                     </select>
-
                     <button type="submit" class="filter-btn">Filter</button>
+                    <a href="/" id="reset-btn" class="reset-btn">Reset</a>
                 </div>
             </form>
         </section>
@@ -106,7 +110,7 @@ $cities = $hotelController->getCities($filters['state']);
                     <?php foreach ($hotels as $hotel): ?>
                         <div class="hotel-card">
                             <img src="/uploads/hotel_images/<?php echo $hotel['image']; ?>" alt="<?php echo $hotel['hotel_name']; ?>">
-                            <h3><?php echo $hotel['hotel_name']; ?></h3>
+                            <h3 class="hotel-name><?php echo $hotel['hotel_name']; ?></h3>
                             <p><?php echo $hotel['location']; ?></p>
                             <p><?php echo $hotel['description']; ?></p>
                             <div class="hotel-buttons">
@@ -127,8 +131,9 @@ $cities = $hotelController->getCities($filters['state']);
 
     <script>
     document.getElementById('hotel-filter-form').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    var countrySelect = document.getElementById('country-select');
+        e.preventDefault(); 
+
+        var countrySelect = document.getElementById('country-select');
     var stateSelect = document.getElementById('state-select');
     var citySelect = document.getElementById('city-select');
 
@@ -143,13 +148,51 @@ $cities = $hotelController->getCities($filters['state']);
     selectedStateName = selectedStateName ? selectedStateName : '';
     selectedCityName = selectedCityName ? selectedCityName : '';
 
-    var newUrl = `http://localhost:8000/?country=${encodeURIComponent(selectedCountryName)}&state=${encodeURIComponent(selectedStateName)}&city=${encodeURIComponent(selectedCityName)}&price_range=${encodeURIComponent(priceRange)}`;
-    window.location.href = newUrl;
+        var filters = {
+            country: selectedCountryName,
+            state: selectedStateName ,
+            city: selectedCityName,
+            price_range: priceRange
+        };
+        console.log(filters);
+        console.count(filters);
+        console.table(filters);
 
-});
+        fetch('/controller/ajaxHandler.php?action=filterHotels', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(filters)
+        })
+        .then(response => response.json())
+        .then(data => {
+            var hotelList = document.getElementById('hotel-list');
+            hotelList.innerHTML = '';
 
-
-document.getElementById('country-select').addEventListener('change', function() {
+            if (data.length > 0) {
+                data.forEach(hotel => {
+                    var hotelCard = `
+                        <div class="hotel-card">
+                            <img src="/uploads/hotel_images/${hotel.image}" alt="${hotel.hotel_name}">
+                            <h3 class="hotel-name">${hotel.hotel_name}</h3>
+                            <p>${hotel.location}</p>
+                            <p>${hotel.description}</p>
+                            <div class="hotel-buttons">
+                                <a href="/hotel-detailed-page?hotel_id=${hotel.hotel_id}" class="view-details-btn">View Details</a>
+                            </div>
+                        </div>
+                    `;
+                    hotelList.innerHTML += hotelCard;
+                });
+            } else {
+                hotelList.innerHTML = '<p>No hotels found for the selected filters.</p>';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  
+    document.getElementById('country-select').addEventListener('change', function() {
     var countryId = this.value;
 
     if (countryId) {
@@ -200,9 +243,8 @@ document.getElementById('state-select').addEventListener('change', function() {
         document.getElementById('city-select').disabled = true;
         document.getElementById('city-select').innerHTML = '<option value="">Select City</option>';
     }
-});
-
-
-</script>
+    });
+    </script>
 </body>
 </html>
+

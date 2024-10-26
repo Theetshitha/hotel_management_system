@@ -160,7 +160,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -180,7 +180,7 @@ body {
     outline: none;
 }
 
-.filter-btn {
+.filter-btn, .reset-btn {
     padding: 10px 20px;
     font-size: 1rem;
     background-color: var(--secondary-color);
@@ -190,8 +190,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.filter-btn:hover {
+a{
+    text-decoration: none;
+}
+.filter-btn:hover, .reset-btn:hover {
     background-color: var(--primary-color-dark);
     transform: translateY(-3px);
 }

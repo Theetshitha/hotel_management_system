@@ -24,7 +24,7 @@
         <section class="dashboard-section">
             <h2>Manage Users</h2>
             <p>View and manage user accounts. Check their bookings, edit their profiles, or remove users from the system.</p>
-            <button class="btn-primary">View Users</button>
+            <button class="btn-primary" id="btn-users" onclick="viewUsers()">View Users</button>
         </section>
 
         <section class="dashboard-section">
@@ -46,9 +46,9 @@
             window.location.href = '/admin-manage-hotels';
         }
 
-        // function viewUsers() {
-        //     window.location.href = '/admin-view-users';
-        // }
+        function viewUsers() {
+            window.location.href = '/admin-view-users';
+        }
 
         // function viewBookings() {
         //     window.location.href = '/admin-view-bookings';

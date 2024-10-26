@@ -1,0 +1,162 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --secondary-color-light: #5dade2;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --input-border-color: #ccc;
+    --danger-color: #e74c3c;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.dashboard-section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px var(--input-border-color);
+    border-radius: 8px;
+    
+}
+
+h2 {
+    color: var(--primary-color);
+}
+.tableListingUser{
+    height: 338px;
+    overflow-y: scroll;
+}
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+   
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px;
+    border: 1px solid var(--input-border-color);
+    text-align: left;
+}
+
+.user-table th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button[onclick*="viewProfile"] {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+button[onclick*="deleteProfile"] {
+    background-color: var(--danger-color);
+    color: var(--text-color);
+}
+
+#navbarHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+#profilePopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+#profileImage {
+    width: 100px;              
+    height: 100px;             
+    border-radius: 50%;       
+    object-fit: cover;        
+    border: 2px solid #ddd;   
+    margin: 0 auto;       
+    margin-left: 7.5rem;   
+}
+#popupContent {
+    padding: 20px;
+    text-align: justify;
+}
+
+#popupContent h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#popupContent p {
+    margin: 8px 0;
+    color: var(--primary-color-light);
+}
+
+#closePopup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: var(--danger-color);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#closePopup:hover {
+    color: var(--primary-color);
+}
+
+.footer_div {
+   margin-top: 20px;
+}
