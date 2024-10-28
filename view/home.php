@@ -110,7 +110,7 @@ $cities = $hotelController->getCities($filters['state']);
                     <?php foreach ($hotels as $hotel): ?>
                         <div class="hotel-card">
                             <img src="/uploads/hotel_images/<?php echo $hotel['image']; ?>" alt="<?php echo $hotel['hotel_name']; ?>">
-                            <h3 class="hotel-name><?php echo $hotel['hotel_name']; ?></h3>
+                            <h3 ><?php echo $hotel['hotel_name']; ?></h3>
                             <p><?php echo $hotel['location']; ?></p>
                             <p><?php echo $hotel['description']; ?></p>
                             <div class="hotel-buttons">

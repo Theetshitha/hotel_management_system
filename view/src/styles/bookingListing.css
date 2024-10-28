@@ -1,0 +1,139 @@
+:root {
+    --primary-color: #2c3e50;
+    --primary-color-dark: #1a252f;
+    --primary-color-light: #3f5062;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #ffffff;
+    --background-color: #f4f4f4;
+    --form-background: #ffffff;
+    --button-hover-color: var(--primary-color-light);
+    --error-color: #ff0000;
+    --input-border-color: #ccc;
+    --input-error-border-color: #ff0000;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #27ae60;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-color-dark);
+    margin: 0;
+    padding: 0;
+}
+
+#navbarHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.booking-list-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.booking-card {
+    background-color: var(--form-background);
+    padding: 20px;
+    box-shadow: 0 2px 6px var(--box-shadow-color);
+    border-radius: 8px;
+    border: 1px solid var(--input-border-color);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
+.booking-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.booking-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.booking-card p {
+    margin: 10px 0;
+    color: var(--primary-color-dark);
+    line-height: 1.4;
+}
+
+.booking-card .cancel-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.cancel-button:hover {
+    background-color: var(--primary-color-light);
+    transform: translateY(-2px);
+}
+
+/* SweetAlert custom styles */
+.swal2-popup {
+    font-family: Arial, sans-serif;
+    background-color: var(--form-background);
+    border: 1px solid var(--box-shadow-color);
+    border-radius: 8px;
+    color: var(--primary-color-dark);
+}
+
+.swal2-title {
+    color: var(--primary-color);
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.swal2-confirm {
+    background-color: var(--success-color);
+    color: var(--text-color);
+}
+
+.swal2-confirm:hover {
+    background-color: #219150;
+}
+
+.swal2-cancel {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.swal2-cancel:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    .booking-list-container {
+        grid-template-columns: 1fr;
+    }
+}

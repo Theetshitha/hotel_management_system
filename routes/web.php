@@ -39,7 +39,12 @@ switch ($requestUri) {
         AuthMiddleware::checkAdmin();
         include __DIR__ . '/../view/admin/userListing.php';
         break;
-       
+    
+    case '/admin-view-bookings':
+        AuthMiddleware::checkAdmin();
+        include __DIR__ . '/../view/admin/bookingListing.php';
+        break;
+        
 
     case '/admin-signup':
         include __DIR__ . '/../view/admin/adminSignup.php';

@@ -29,8 +29,8 @@
 
         <section class="dashboard-section">
             <h2>Manage Bookings</h2>
-            <p>Track and manage hotel bookings. View booking details, confirm or cancel bookings as required.</p>
-            <button class="btn-primary">View Bookings</button>
+            <p>Track and manage hotel bookings. View booking details, cancel bookings as required.</p>
+            <button class="btn-primary" id="btn-bookings" onclick="viewBookings()">View Bookings</button>
         </section>
     </main>
 
@@ -50,9 +50,9 @@
             window.location.href = '/admin-view-users';
         }
 
-        // function viewBookings() {
-        //     window.location.href = '/admin-view-bookings';
-        // }
+        function viewBookings() {
+            window.location.href = '/admin-view-bookings';
+        }
     </script>
 </body>
 </html>
