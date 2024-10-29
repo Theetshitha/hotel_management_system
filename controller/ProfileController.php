@@ -41,26 +41,13 @@ class ProfileController {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $bio = $_POST['bio'];
-        $profile_image = null;
+        
 
-        if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
-            $fileName = basename($_FILES["profile_image"]["name"]);
-            $targetDir = __DIR__ . "/../uploads/";
-            $targetFilePath = $targetDir . $fileName;
-
-            if (!file_exists($targetDir)) {
-                mkdir($targetDir, 0755, true);
-            }
-
-            if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $targetFilePath)) {
-                $profile_image = $fileName;
-            }
-        }
 
         if ($this->is_admin) {
-            $this->model->updateAdminProfile($user_id, $name, $email, $phone, $bio, $profile_image);
+            $this->model->updateAdminProfile($user_id, $name, $email, $phone, $bio);
         } else {
-            $this->model->updateUserProfile($user_id, $name, $email, $phone, $bio, $profile_image);
+            $this->model->updateUserProfile($user_id, $name, $email, $phone, $bio);
         }
 
         header("Location:/profile-page");

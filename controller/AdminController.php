@@ -73,14 +73,13 @@ class AdminController {
     // Handle admin logout
     public function logout() {
         session_start(); 
-        session_unset(); // Unset all session variables
-        session_destroy(); // Destroy session
+        session_unset(); 
+        session_destroy(); 
         header("Location: /");
         exit();
     }
 }
 
-// Ensure that PDO is passed when initializing AdminController
 $controller = new AdminController($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['admin_login'])) {

@@ -3,7 +3,6 @@ require_once __DIR__ . '/../config/config.php';
 
 function addHotel($hotel_name, $location, $country_name, $state_name, $address, $no_of_rooms, $price_per_room, $availability, $verified, $description, $hotel_images) {
     global $pdo;
-
     $total_price = $price_per_room * $no_of_rooms;
 
     try {
@@ -14,7 +13,7 @@ function addHotel($hotel_name, $location, $country_name, $state_name, $address, 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':hotel_name' => $hotel_name,
-            ':locaton' => $location,        
+            ':location' => $location,        
             ':country' => $country_name,     
             ':state' => $state_name,         
             ':address' => $address,
@@ -26,10 +25,8 @@ function addHotel($hotel_name, $location, $country_name, $state_name, $address, 
             ':description' => $description
         ]);
 
-       
         $hotel_id = $pdo->lastInsertId();
 
-        
         foreach ($hotel_images as $image) {
             $sql_img = "INSERT INTO tbl_hms_hotel_images (hotel_id, image) VALUES (:hotel_id, :image)";
             $stmt_img = $pdo->prepare($sql_img);
@@ -39,12 +36,9 @@ function addHotel($hotel_name, $location, $country_name, $state_name, $address, 
             ]);
         }
 
-        
         $pdo->commit();
-
         return $hotel_id;
     } catch (PDOException $e) {
-        
         $pdo->rollBack();
         echo "Error: " . $e->getMessage();
         return false;
@@ -96,7 +90,6 @@ function addService($hotel_id, $service_name, $service_price, $service_availabil
     global $pdo;
 
     try {
-        
         $sql = "INSERT INTO tbl_hms_service (hotel_id, service_name, price, availability, description)
                 VALUES (:hotel_id, :service_name, :price, :availability, :description)";
         $stmt = $pdo->prepare($sql);
@@ -117,9 +110,7 @@ function addService($hotel_id, $service_name, $service_price, $service_availabil
 
 function addServiceImage($service_id, $image) {
     global $pdo;
-
     try {
-        
         $sql_img = "INSERT INTO tbl_hms_service_images (service_id, image) VALUES (:service_id, :image)";
         $stmt_img = $pdo->prepare($sql_img);
         $stmt_img->execute([

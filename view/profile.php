@@ -59,10 +59,7 @@ $is_admin = $profileController->is_admin;
                 <label for="bio">Bio</label>
                 <textarea name="bio"><?php echo $profileData['bio']; ?></textarea>
             </div>
-            <div class="form-group">
-                <label for="profile_image">Profile Image</label>
-                <input type="file" name="profile_image">
-            </div>
+            
             <button type="submit" class="submit-button">Save Changes</button>
         </form>
     </div>
